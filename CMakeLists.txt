@@ -21,7 +21,7 @@ set(BUILD_GAMES    OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(raylib)
 
 # --- 2. Define your executable ---
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} main.cpp "Player.cpp" "Entities/Enemy.cpp" "Logic.cpp")
 
 # --- 3. Link Raylib ---
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
