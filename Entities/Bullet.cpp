@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Bullet::Bullet(int xBorder, int yBorder, int x, int y) {
+Bullet::Bullet(int xBorder, int yBorder, int x, int y, int type) {
 	rotation = 0;
 	speed = 5;
 	alive = true;
@@ -12,6 +12,7 @@ Bullet::Bullet(int xBorder, int yBorder, int x, int y) {
 	this->yBorder = yBorder;
 	this->x = x;
 	this->y = y;
+	this->type = type;
 
 	//cout << "Bullet created" << endl;
 }
