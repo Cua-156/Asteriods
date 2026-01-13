@@ -23,7 +23,7 @@ Player::~Player() {
 }
 
 void Player::update() {
-	//cout << "Player updated" << endl;
+	cout << "Player updated" << endl;
 	if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) {
 		x += speed;
 	}
@@ -37,7 +37,7 @@ void Player::update() {
 		y += speed;
 	}
 	if (IsKeyDown(KEY_SPACE)) {
-		spawnBullet = true;
+		setSpawnBullet(true);
 		cout << "Shoot!" << endl;
 		
 	}

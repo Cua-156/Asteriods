@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include <iostream>
-#include <vector>;
+#include <vector>
+#include <memory>
 
 #include "Entities/Player.h"
 #include "Entities/Bullet.h"
@@ -13,30 +14,33 @@ void drawBackground(Color color) {
 }
 
 int main() {
-	vector<Entity> entities;
+	vector<unique_ptr<Entity>> entities;
 	int width = 800;
 	int height = 600;
 	InitWindow(width, height, "Raylib Window Example");
 	SetTargetFPS(60);
 
-	Player Player(width, height);
-	entities.push_back(Player);
+	auto player = make_unique<Player>(width, height);
+	Player& playerRef = *player; // Keep a reference to the player
+	entities.push_back(std::move(player));
 
 
 	while (WindowShouldClose() == false) {
 		BeginDrawing();
 		drawBackground(BLACK);
 		DrawText("This is text!", 350, 280, 20, DARKGRAY);
-		for (Entity& entity : entities) {
-			entity.update();
-			entity.render();
+		for (auto& entity : entities) {
+			cout << "Entity updated and rendered1" << endl;
+			entity->update();
+			entity->render();
+			cout << "Entity updated and rendered2" << endl;
 		}
 
-		if (Player.getSpawnBullet() == true) {
+		cout << "bullet Check: " << (playerRef.getSpawnBullet() == true) << endl;
+		if (playerRef.getSpawnBullet() == true) {
 			cout << "Spawning bullet" << endl;
-			Bullet bullet(width, height, Player.getX(), Player.getY());
-			entities.push_back(bullet);
-			Player.setSpawnBullet(false);
+			entities.push_back(make_unique<Bullet>(width, height, playerRef.getX(), playerRef.getY()));
+			playerRef.setSpawnBullet(false);
 		}
 		EndDrawing();
 	}

@@ -4,9 +4,10 @@
 
 using namespace std;
 
-Bullet::Bullet(int xBorder, int yBorader, int x, int y) {
+Bullet::Bullet(int xBorder, int yBorder, int x, int y) {
 	rotation = 0;
 	speed = 5;
+	alive = true;
 	this->xBorder = xBorder;
 	this->yBorder = yBorder;
 	this->x = x;
@@ -20,11 +21,11 @@ Bullet::~Bullet() {
 }
 
 void Bullet::update() {
-	alive = (timer == 10000)
 	if (alive) {
 		x += speed;
 	}
 	timer++;
+	if (timer >= 10000) { alive = false; }
 
 }
 
