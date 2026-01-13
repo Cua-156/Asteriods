@@ -15,7 +15,7 @@ Player::Player(int xBorder, int yBorder) {
 	this->xBorder = xBorder;
 	this->yBorder = yBorder;
 
-	cout << "Player created" << endl;
+	//cout << "Player created" << endl;
 }
 
 Player::~Player() {
@@ -23,7 +23,7 @@ Player::~Player() {
 }
 
 void Player::update() {
-	cout << "Player updated" << endl;
+	//cout << "Player updated" << endl;
 	if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) {
 		x += speed;
 	}
@@ -38,7 +38,7 @@ void Player::update() {
 	}
 	if (IsKeyDown(KEY_SPACE)) {
 		setSpawnBullet(true);
-		cout << "Shoot!" << endl;
+		//cout << "Shoot!" << endl;
 		
 	}
 }

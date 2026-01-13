@@ -30,15 +30,12 @@ int main() {
 		drawBackground(BLACK);
 		DrawText("This is text!", 350, 280, 20, DARKGRAY);
 		for (auto& entity : entities) {
-			cout << "Entity updated and rendered1" << endl;
 			entity->update();
 			entity->render();
-			cout << "Entity updated and rendered2" << endl;
 		}
 
-		cout << "bullet Check: " << (playerRef.getSpawnBullet() == true) << endl;
 		if (playerRef.getSpawnBullet() == true) {
-			cout << "Spawning bullet" << endl;
+			//cout << "Spawning bullet" << endl;
 			entities.push_back(make_unique<Bullet>(width, height, playerRef.getX(), playerRef.getY()));
 			playerRef.setSpawnBullet(false);
 		}

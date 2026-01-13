@@ -13,7 +13,7 @@ Bullet::Bullet(int xBorder, int yBorder, int x, int y) {
 	this->x = x;
 	this->y = y;
 
-	cout << "Bullet created" << endl;
+	//cout << "Bullet created" << endl;
 }
 
 Bullet::~Bullet() {
@@ -22,7 +22,7 @@ Bullet::~Bullet() {
 
 void Bullet::update() {
 	if (alive) {
-		x += speed;
+		y -= speed;
 	}
 	timer++;
 	if (timer >= 10000) { alive = false; }
